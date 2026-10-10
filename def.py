@@ -3,6 +3,7 @@ import sys
 health = 100
 health_evil = 100
 password = "123456"
+inventory = []
 
 
 def show_health_evil(hp_ev):
@@ -32,6 +33,10 @@ def death_evil(hp_ev):
 def damage_pl(hp, damage):
     return max(0, hp - damage)
 
+def look_inv():
+    inv = " ".join(inventory.lower().split())
+    print(inv)
+
 
 print("Вы вошли в замок.")
 print("Вы оглянулись.")
@@ -42,6 +47,13 @@ while True:
 
     if startCh == "1":
         print("Вы подергали за ручку. Дверь закрыта.")
+        print("На полу лежит меч. 1 - подобрать, 2 - уйти ")
+        sword = int(input())
+        if sword == 1:
+            inventory.append("меч")
+            look_inv()
+        elif sword == 2:
+            break
 
     elif startCh == "2":
         print("Вы вошли в темноту. Там были летучие мыши с острыми, как лезвия, крыльями. Улетев, они порезали вас. -10 хп")
